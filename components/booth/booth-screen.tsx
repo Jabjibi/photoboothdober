@@ -4,6 +4,7 @@ import { useMemo, useRef, useState, useSyncExternalStore } from "react";
 import gsap from "gsap";
 
 import { BoothCanvas } from "@/components/booth/booth-canvas";
+import { BoothCanvasMobile } from "@/components/form-moblie/booth-canvas-mobile";
 import { Sparkle } from "@/components/shared/sparkle";
 import { Star5 } from "@/components/shared/star5";
 import { Heart } from "@/components/shared/heart";
@@ -152,7 +153,12 @@ export function BoothScreen({ onStart }: BoothScreenProps) {
         >
           {/* BoothCanvas: z-index 1 within this container */}
           <div style={{ position: "relative", zIndex: 1 }}>
-            <BoothCanvas curtainOpen={phase === "curtain"} />
+            <div className="block sm:hidden">
+              <BoothCanvasMobile curtainOpen={phase === "curtain"} />
+            </div>
+            <div className="hidden sm:block">
+              <BoothCanvas curtainOpen={phase === "curtain"} />
+            </div>
           </div>
 
           {/* orbit ring: hidden on mobile, shown sm+ */}
