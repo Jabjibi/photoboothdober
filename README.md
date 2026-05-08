@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Snap Cut Photo Booth Web App
+
+A web-based photobooth application built with **Next.js** and **React**. This app allows users to enjoy a seamless photobooth experience directly from their browser, complete with custom layouts, creative themes, and instant image downloads.
+
+## Features
+
+- **Interactive Camera:** Real-time camera feed with an automatic countdown timer. Includes a mock stream fallback if a physical camera is unavailable or access is denied.
+- **Multiple Layouts:** Choose from a variety of photo arrangements:
+  - `4 Action` (Vertical 4-photo strip)
+  - `4 Grid` (2x2 photo grid)
+  - `Single` (One large photo)
+  - `Double` (Vertical 2-photo strip)
+- **Custom Themes:** Creative frames powered by custom Canvas rendering:
+  - **Basic:** Minimalist white background.
+  - **Dark:** Classic black background.
+  - **Receipt:** Simulates a modern store receipt complete with "nutrition facts" of happiness and barcodes.
+  - **Vintage Ticket:** Simulates a retro movie ticket featuring side notches, dashed lines, and a vintage camera icon.
+- **Export & Download:** Automatically combines captured photos onto a styled canvas, ready for instant download and sharing.
+
+## Tech Stack
+
+- **Framework:** [Next.js](https://nextjs.org/) (App Router)
+- **Library:** [React](https://reactjs.org/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **UI Components:** [shadcn/ui](https://ui.shadcn.com/) (partial implementation) and Lucide Icons
+- **Image Processing:** HTML5 Canvas API for drawing images, generating barcodes, and rendering complex ticket/receipt layouts.
 
 ## Getting Started
 
-First, run the development server:
+1. **Clone the repository**
+   ```bash
+   git clone <your-repo-url>
+   cd photoboothdober
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+![alt text](image.png)
