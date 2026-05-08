@@ -5,7 +5,13 @@ export function SmileySticker() {
         <circle cx="28" cy="28" r="24" fill="var(--gold)" stroke="var(--ink)" strokeWidth="3" />
         <circle cx="20" cy="24" r="2.5" fill="var(--ink)" />
         <circle cx="36" cy="24" r="2.5" fill="var(--ink)" />
-        <path d="M18 32 Q28 42 38 32" fill="none" stroke="var(--ink)" strokeWidth="3" strokeLinecap="round" />
+        <path
+          d="M18 32 Q28 42 38 32"
+          fill="none"
+          stroke="var(--ink)"
+          strokeWidth="3"
+          strokeLinecap="round"
+        />
       </svg>
     </div>
   );

@@ -6,7 +6,13 @@ interface ShootCardProps {
   onStart: () => void;
 }
 
-export function ShootCard({ cameraReady, cameraError, running, photosDone, onStart }: ShootCardProps) {
+export function ShootCard({
+  cameraReady,
+  cameraError,
+  running,
+  photosDone,
+  onStart,
+}: ShootCardProps) {
   return (
     <div
       className="rounded-2xl p-4"
@@ -18,13 +24,13 @@ export function ShootCard({ cameraReady, cameraError, running, photosDone, onSta
       }}
     >
       <p className="font-hand text-2xl leading-none">ready? strike a pose ✦</p>
-      <p className="font-mono-booth text-[10px] tracking-[0.16em] opacity-70 mt-2">
+      <p className="font-mono-booth mt-2 text-[10px] tracking-[0.16em] opacity-70">
         3-SECOND TIMER PER SHOT · AUTO-PRINT WHEN DONE
       </p>
       <button
         onClick={onStart}
         disabled={!cameraReady || running}
-        className="font-display w-full mt-3 py-4 rounded-xl text-2xl tracking-[0.06em] cursor-pointer disabled:cursor-not-allowed transition-opacity"
+        className="font-display mt-3 w-full cursor-pointer rounded-xl py-4 text-2xl tracking-[0.06em] transition-opacity disabled:cursor-not-allowed"
         style={{
           background: running ? "var(--paper-2)" : "var(--red)",
           color: running ? "var(--ink)" : "var(--paper)",
@@ -35,7 +41,7 @@ export function ShootCard({ cameraReady, cameraError, running, photosDone, onSta
         {running ? "SHOOTING…" : photosDone ? "↺ RETAKE ALL" : "▸ START SHOOTING ◂"}
       </button>
       {!cameraReady && !cameraError && (
-        <p className="font-mono-booth text-[9px] mt-2 tracking-[0.15em] opacity-70">
+        <p className="font-mono-booth mt-2 text-[9px] tracking-[0.15em] opacity-70">
           WAITING FOR CAMERA…
         </p>
       )}

@@ -19,8 +19,14 @@ export function CurtainHalf({ side, curtainStyle }: CurtainHalfProps) {
         background:
           "repeating-linear-gradient(90deg, var(--paper) 0 12px, var(--paper-2) 12px 16px, var(--paper) 16px 24px)",
         ...(isLeft
-          ? { borderRight: "1.5px solid var(--ink)", boxShadow: "inset -6px 0 12px rgba(0,0,0,0.2)" }
-          : { borderLeft: "1.5px solid var(--ink)", boxShadow: "inset 6px 0 12px rgba(0,0,0,0.2)" }),
+          ? {
+              borderRight: "1.5px solid var(--ink)",
+              boxShadow: "inset -6px 0 12px rgba(0,0,0,0.2)",
+            }
+          : {
+              borderLeft: "1.5px solid var(--ink)",
+              boxShadow: "inset 6px 0 12px rgba(0,0,0,0.2)",
+            }),
         zIndex: 5,
         ...curtainStyle,
       }}
@@ -33,7 +39,8 @@ export function CurtainHalf({ side, curtainStyle }: CurtainHalfProps) {
           left: 0,
           right: 0,
           height: 14,
-          background: "radial-gradient(circle at 12% 0, var(--paper) 11px, transparent 12px) repeat-x",
+          background:
+            "radial-gradient(circle at 12% 0, var(--paper) 11px, transparent 12px) repeat-x",
           backgroundSize: "22px 14px",
         }}
       />

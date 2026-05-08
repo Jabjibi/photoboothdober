@@ -54,15 +54,20 @@ export function BoothProvider({ children }: { children: React.ReactNode }) {
 
   const actions: BoothActions = {
     goTo: setScreen,
-    setConfig: (cfg) => { setConfigState(cfg); setPhotosState([]); },
+    setConfig: (cfg) => {
+      setConfigState(cfg);
+      setPhotosState([]);
+    },
     setPhotos: setPhotosState,
-    restart: () => { setScreen("booth"); setPhotosState([]); setConfigState(DEFAULT_CONFIG); },
+    restart: () => {
+      setScreen("booth");
+      setPhotosState([]);
+      setConfigState(DEFAULT_CONFIG);
+    },
   };
 
   return (
-    <BoothContext value={{ state: { screen, config, photos }, actions }}>
-      {children}
-    </BoothContext>
+    <BoothContext value={{ state: { screen, config, photos }, actions }}>{children}</BoothContext>
   );
 }
 

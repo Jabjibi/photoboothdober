@@ -22,7 +22,12 @@ export function BoothPoster() {
     >
       <div
         className="font-hand"
-        style={{ fontSize: "clamp(9px, 3vw, 14px)", color: "var(--ink)", lineHeight: 1.1, textAlign: "center" }}
+        style={{
+          fontSize: "clamp(9px, 3vw, 14px)",
+          color: "var(--ink)",
+          lineHeight: 1.1,
+          textAlign: "center",
+        }}
       >
         say cheese!
       </div>
@@ -73,7 +78,12 @@ export function BoothPoster() {
 
       <div
         className="font-display"
-        style={{ fontSize: "clamp(7px, 2vw, 11px)", letterSpacing: "0.12em", color: "var(--ink)", flexShrink: 0 }}
+        style={{
+          fontSize: "clamp(7px, 2vw, 11px)",
+          letterSpacing: "0.12em",
+          color: "var(--ink)",
+          flexShrink: 0,
+        }}
       >
         PHOTOS
       </div>

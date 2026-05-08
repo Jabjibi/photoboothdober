@@ -9,8 +9,7 @@ export function DownloadButton({ icon, title, sub, onClick }: DownloadButtonProp
   return (
     <button
       onClick={onClick}
-      className="flex items-center gap-3 w-full text-left rounded-xl px-3 py-2.5 cursor-pointer
-        transition-transform hover:-translate-y-0.5"
+      className="flex w-full cursor-pointer items-center gap-3 rounded-xl px-3 py-2.5 text-left transition-transform hover:-translate-y-0.5"
       style={{
         background: "var(--paper)",
         color: "var(--ink)",
@@ -18,7 +17,7 @@ export function DownloadButton({ icon, title, sub, onClick }: DownloadButtonProp
       }}
     >
       <div
-        className="font-display flex items-center justify-center text-lg shrink-0 rounded-lg"
+        className="font-display flex shrink-0 items-center justify-center rounded-lg text-lg"
         style={{
           width: 36,
           height: 36,
@@ -29,11 +28,15 @@ export function DownloadButton({ icon, title, sub, onClick }: DownloadButtonProp
       >
         {icon}
       </div>
-      <div className="flex-1 min-w-0">
-        <p className="font-display text-sm leading-none" style={{ color: "var(--ink)" }}>{title}</p>
-        <p className="font-mono-booth text-[9px] tracking-[0.15em] opacity-65 mt-0.5">{sub}</p>
+      <div className="min-w-0 flex-1">
+        <p className="font-display text-sm leading-none" style={{ color: "var(--ink)" }}>
+          {title}
+        </p>
+        <p className="font-mono-booth mt-0.5 text-[9px] tracking-[0.15em] opacity-65">{sub}</p>
       </div>
-      <span className="font-mono-booth text-sm" style={{ color: "var(--ink)" }}>↓</span>
+      <span className="font-mono-booth text-sm" style={{ color: "var(--ink)" }}>
+        ↓
+      </span>
     </button>
   );
 }

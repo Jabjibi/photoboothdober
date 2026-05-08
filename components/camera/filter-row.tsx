@@ -8,8 +8,8 @@ interface FilterRowProps {
 
 export function FilterRow({ filter, setFilter, running }: FilterRowProps) {
   return (
-    <div className="flex gap-2 items-center overflow-x-auto pb-1">
-      <p className="font-mono-booth text-[10px] tracking-[0.18em] opacity-70 shrink-0">FILTER ›</p>
+    <div className="flex items-center gap-2 overflow-x-auto pb-1">
+      <p className="font-mono-booth shrink-0 text-[10px] tracking-[0.18em] opacity-70">FILTER ›</p>
       {FILTERS.map((f) => {
         const active = filter === f.id;
         return (
@@ -17,7 +17,7 @@ export function FilterRow({ filter, setFilter, running }: FilterRowProps) {
             key={f.id}
             onClick={() => setFilter(f.id)}
             disabled={running}
-            className="font-mono-booth shrink-0 text-[11px] tracking-[0.1em] px-3 py-1.5 rounded-full cursor-pointer disabled:cursor-not-allowed"
+            className="font-mono-booth shrink-0 cursor-pointer rounded-full px-3 py-1.5 text-[11px] tracking-[0.1em] disabled:cursor-not-allowed"
             style={{
               background: active ? "var(--ink)" : "var(--paper)",
               color: active ? "var(--paper)" : "var(--ink)",

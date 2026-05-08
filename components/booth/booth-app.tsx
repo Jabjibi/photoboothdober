@@ -14,19 +14,20 @@ export function BoothApp() {
   const { screen, config, photos } = state;
 
   return (
-    <div className="relative w-full h-dvh overflow-hidden" style={{ background: "var(--paper)" }}>
+    <div className="relative h-dvh w-full overflow-hidden" style={{ background: "var(--paper)" }}>
       <BoothNav currentStep={STEP_MAP[screen]} />
 
-      {screen === "booth" && (
-        <BoothScreen onStart={() => actions.goTo("frame")} />
-      )}
+      {screen === "booth" && <BoothScreen onStart={() => actions.goTo("frame")} />}
 
       {screen === "frame" && (
         <FrameSelectScreen
           initialLayoutId={config.layoutId}
           initialStyleId={config.styleId}
           initialMeta={config.meta}
-          onConfirm={(cfg) => { actions.setConfig(cfg); actions.goTo("camera"); }}
+          onConfirm={(cfg) => {
+            actions.setConfig(cfg);
+            actions.goTo("camera");
+          }}
           onBack={() => actions.goTo("booth")}
         />
       )}
@@ -34,7 +35,10 @@ export function BoothApp() {
       {screen === "camera" && (
         <CameraScreen
           layoutId={config.layoutId}
-          onComplete={(p) => { actions.setPhotos(p); actions.goTo("result"); }}
+          onComplete={(p) => {
+            actions.setPhotos(p);
+            actions.goTo("result");
+          }}
           onBack={() => actions.goTo("frame")}
         />
       )}

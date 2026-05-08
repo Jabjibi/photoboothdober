@@ -25,7 +25,7 @@ export function Strip4({ photos, styleId, meta }: FrameProps) {
       <div
         style={{
           textAlign: "center",
-          color: (isNews || isFairy) ? s.palette.ink : s.palette.paper,
+          color: isNews || isFairy ? s.palette.ink : s.palette.paper,
           fontFamily: isNews ? "var(--font-pirata), serif" : "var(--font-bagel), sans-serif",
           fontSize: isNews ? 22 : 18,
           letterSpacing: "0.05em",
@@ -71,7 +71,7 @@ export function Strip4({ photos, styleId, meta }: FrameProps) {
         style={{
           marginTop: 10,
           textAlign: "center",
-          color: (isNews || isRetro || isFairy) ? s.palette.ink : s.palette.paper,
+          color: isNews || isRetro || isFairy ? s.palette.ink : s.palette.paper,
           fontSize: 9,
           letterSpacing: "0.18em",
           background: isRetro ? s.palette.accent : "transparent",
@@ -89,7 +89,14 @@ export function Strip4({ photos, styleId, meta }: FrameProps) {
             </svg>
           </div>
           <div style={{ position: "absolute", top: 4, right: -4 }}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="#f5c542" stroke={s.palette.ink} strokeWidth="1.4">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="#f5c542"
+              stroke={s.palette.ink}
+              strokeWidth="1.4"
+            >
               <path d="M12 2 L14.6 9.2 L22 9.6 L16.2 14.2 L18.2 21.4 L12 17.2 L5.8 21.4 L7.8 14.2 L2 9.6 L9.4 9.2 Z" />
             </svg>
           </div>

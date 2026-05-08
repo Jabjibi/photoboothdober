@@ -8,7 +8,6 @@ export function Strip3V({ photos, styleId, meta }: FrameProps) {
   const isFairy = styleId === "fairy";
   const title = meta.title ?? "STACK 3";
 
-
   return (
     <div
       style={{
@@ -24,7 +23,7 @@ export function Strip3V({ photos, styleId, meta }: FrameProps) {
       <div
         style={{
           textAlign: "center",
-          color: (isNews || isFairy) ? s.palette.ink : s.palette.paper,
+          color: isNews || isFairy ? s.palette.ink : s.palette.paper,
           fontFamily: isNews ? "var(--font-pirata), serif" : "var(--font-bagel), sans-serif",
           fontSize: 22,
           paddingBottom: 6,
@@ -53,7 +52,7 @@ export function Strip3V({ photos, styleId, meta }: FrameProps) {
         style={{
           marginTop: 10,
           textAlign: "center",
-          color: (isNews || isFairy) ? s.palette.ink : s.palette.paper,
+          color: isNews || isFairy ? s.palette.ink : s.palette.paper,
           fontSize: 9,
           letterSpacing: "0.2em",
         }}

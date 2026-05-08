@@ -35,12 +35,12 @@ export function CameraScreen({ layoutId, onComplete, onBack }: CameraScreenProps
 
   return (
     <div
-      className="relative w-full h-full overflow-auto px-4 sm:px-6 pb-5 sm:pb-6"
+      className="relative h-full w-full overflow-auto px-4 pb-5 sm:px-6 sm:pb-6"
       style={{ paddingTop: 70 }}
     >
       <div className="screen-grid">
         {/* ── LEFT: viewport ── */}
-        <div className="flex flex-col gap-3 min-h-0">
+        <div className="flex min-h-0 flex-col gap-3">
           <CameraHeader totalShots={totalShots} onBack={onBack} />
           <CameraViewport
             videoRef={videoRef}

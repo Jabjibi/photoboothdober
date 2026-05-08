@@ -68,7 +68,10 @@ export function BoothPoster() {
         </text>
       </svg>
 
-      <div className="font-display" style={{ fontSize: 14, letterSpacing: "0.15em", color: "var(--ink)" }}>
+      <div
+        className="font-display"
+        style={{ fontSize: 14, letterSpacing: "0.15em", color: "var(--ink)" }}
+      >
         PHOTOS
       </div>
     </div>

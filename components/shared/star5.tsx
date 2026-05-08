@@ -10,7 +10,14 @@ interface Star5Props {
 }
 
 /** Positioned + animated 5-point star for decorative use */
-export function Star5({ x, y, size = 18, delay = 0, color = "var(--gold)", rotate = 0 }: Star5Props) {
+export function Star5({
+  x,
+  y,
+  size = 18,
+  delay = 0,
+  color = "var(--gold)",
+  rotate = 0,
+}: Star5Props) {
   return (
     <Star5Icon
       color={color}

@@ -1,11 +1,5 @@
 import type { Metadata } from "next";
-import {
-  Bagel_Fat_One,
-  Caveat,
-  Space_Grotesk,
-  Pirata_One,
-  DM_Mono,
-} from "next/font/google";
+import { Bagel_Fat_One, Caveat, Space_Grotesk, Pirata_One, DM_Mono } from "next/font/google";
 import "./globals.css";
 
 const bagelFatOne = Bagel_Fat_One({
@@ -56,7 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       ].join(" ")}
     >
       <body
-        className="min-h-dvh overflow-hidden font-body antialiased"
+        className="font-body min-h-dvh overflow-hidden antialiased"
         style={{ background: "var(--paper)", color: "var(--ink)" }}
       >
         {children}

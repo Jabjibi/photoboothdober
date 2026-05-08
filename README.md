@@ -31,5 +31,6 @@ A web-based photobooth application built with **Next.js** and **React**. This ap
    ```bash
    git clone <your-repo-url>
    cd photoboothdober
+   ```
 
 ![alt text](image.png)

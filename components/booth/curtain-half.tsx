@@ -33,7 +33,8 @@ export function CurtainHalf({ side, curtainStyle }: CurtainHalfProps) {
           left: 0,
           right: 0,
           height: 18,
-          background: "radial-gradient(circle at 12% 0, var(--paper) 14px, transparent 15px) repeat-x",
+          background:
+            "radial-gradient(circle at 12% 0, var(--paper) 14px, transparent 15px) repeat-x",
           backgroundSize: "26px 18px",
         }}
       />

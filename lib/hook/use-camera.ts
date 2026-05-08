@@ -22,7 +22,10 @@ export function useCamera() {
           audio: false,
         });
         // Discard immediately if cleanup already ran (React StrictMode double-invoke)
-        if (cancelled) { stream.getTracks().forEach((t) => t.stop()); return; }
+        if (cancelled) {
+          stream.getTracks().forEach((t) => t.stop());
+          return;
+        }
         localStream = stream;
         streamRef.current = stream;
         if (videoEl) {

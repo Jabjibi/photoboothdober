@@ -25,7 +25,11 @@ export function BoothScreen({ onStart }: BoothScreenProps) {
   const boothWrapRef = useRef<HTMLDivElement>(null);
 
   // Server returns false → skip bgItems during SSR; client returns true → render them
-  const mounted = useSyncExternalStore(() => () => {}, () => true, () => false);
+  const mounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
 
   const bgItems = useMemo(
     () =>
@@ -56,14 +60,11 @@ export function BoothScreen({ onStart }: BoothScreenProps) {
   };
 
   return (
-    <div
-      className="relative w-full h-full overflow-hidden"
-      style={{ background: "var(--paper)" }}
-    >
+    <div className="relative h-full w-full overflow-hidden" style={{ background: "var(--paper)" }}>
       {/* grain + radial bg */}
       <div
         aria-hidden
-        className="absolute inset-0 pointer-events-none"
+        className="pointer-events-none absolute inset-0"
         style={{
           backgroundImage:
             "radial-gradient(circle at center, rgba(216,32,31,0.08), transparent 60%), radial-gradient(var(--ink) 1px, transparent 1.4px)",
@@ -73,12 +74,12 @@ export function BoothScreen({ onStart }: BoothScreenProps) {
       />
 
       {/* corner — top left (hidden on mobile to avoid overlap) */}
-      <div className="absolute left-6 top-20 z-10 pointer-events-none hidden sm:block">
-        <p className="font-hand text-2xl sm:text-3xl leading-none" style={{ color: "var(--red)" }}>
+      <div className="pointer-events-none absolute top-20 left-6 z-10 hidden sm:block">
+        <p className="font-hand text-2xl leading-none sm:text-3xl" style={{ color: "var(--red)" }}>
           ✦ step right up
         </p>
         <p
-          className="font-mono-booth text-[10px] sm:text-[11px] mt-1"
+          className="font-mono-booth mt-1 text-[10px] sm:text-[11px]"
           style={{ letterSpacing: "0.15em", color: "var(--ink)" }}
         >
           EST. 2026 · OPEN 24H
@@ -86,12 +87,12 @@ export function BoothScreen({ onStart }: BoothScreenProps) {
       </div>
 
       {/* corner — top right (hidden on mobile to avoid overlap) */}
-      <div className="absolute right-6 top-20 z-10 text-right pointer-events-none hidden sm:block">
-        <p className="font-news text-xl sm:text-2xl leading-none" style={{ color: "var(--ink)" }}>
+      <div className="pointer-events-none absolute top-20 right-6 z-10 hidden text-right sm:block">
+        <p className="font-news text-xl leading-none sm:text-2xl" style={{ color: "var(--ink)" }}>
           NO COINS REQUIRED
         </p>
         <p
-          className="font-mono-booth text-[10px] sm:text-[11px] mt-1"
+          className="font-mono-booth mt-1 text-[10px] sm:text-[11px]"
           style={{ letterSpacing: "0.15em", color: "var(--red)" }}
         >
           ONE WINK · ONE PRINT
@@ -99,44 +100,91 @@ export function BoothScreen({ onStart }: BoothScreenProps) {
       </div>
 
       {/* bg sparkle field — 8 items on mobile, all 28 on sm+ */}
-      <div aria-hidden className="absolute inset-0 pointer-events-none" style={{ zIndex: 0 }}>
+      <div aria-hidden className="pointer-events-none absolute inset-0" style={{ zIndex: 0 }}>
         {/* first 8: always visible */}
-        {mounted && bgItems.slice(0, 8).map((item, i) => {
-          if (item.type === 0) return <Sparkle key={i} x={item.x} y={item.y} size={item.size} delay={item.delay} color="var(--red)" />;
-          if (item.type === 1) return <Star5 key={i} x={item.x} y={item.y} size={item.size} delay={item.delay} color="var(--gold)" rotate={seededRandom(i * 7) * 90} />;
-          return <Heart key={i} x={item.x} y={item.y} size={item.size} delay={item.delay} />;
-        })}
+        {mounted &&
+          bgItems.slice(0, 8).map((item, i) => {
+            if (item.type === 0)
+              return (
+                <Sparkle
+                  key={i}
+                  x={item.x}
+                  y={item.y}
+                  size={item.size}
+                  delay={item.delay}
+                  color="var(--red)"
+                />
+              );
+            if (item.type === 1)
+              return (
+                <Star5
+                  key={i}
+                  x={item.x}
+                  y={item.y}
+                  size={item.size}
+                  delay={item.delay}
+                  color="var(--gold)"
+                  rotate={seededRandom(i * 7) * 90}
+                />
+              );
+            return <Heart key={i} x={item.x} y={item.y} size={item.size} delay={item.delay} />;
+          })}
         {/* items 9-28: hidden on mobile; display:contents on sm+ so child SVGs
             still position relative to this inset-0 parent (not the wrapper) */}
         <div className="mobile-hide">
-          {mounted && bgItems.slice(8).map((item, i) => {
-            const idx = i + 8;
-            if (item.type === 0) return <Sparkle key={idx} x={item.x} y={item.y} size={item.size} delay={item.delay} color="var(--red)" />;
-            if (item.type === 1) return <Star5 key={idx} x={item.x} y={item.y} size={item.size} delay={item.delay} color="var(--gold)" rotate={seededRandom(idx * 7) * 90} />;
-            return <Heart key={idx} x={item.x} y={item.y} size={item.size} delay={item.delay} />;
-          })}
+          {mounted &&
+            bgItems.slice(8).map((item, i) => {
+              const idx = i + 8;
+              if (item.type === 0)
+                return (
+                  <Sparkle
+                    key={idx}
+                    x={item.x}
+                    y={item.y}
+                    size={item.size}
+                    delay={item.delay}
+                    color="var(--red)"
+                  />
+                );
+              if (item.type === 1)
+                return (
+                  <Star5
+                    key={idx}
+                    x={item.x}
+                    y={item.y}
+                    size={item.size}
+                    delay={item.delay}
+                    color="var(--gold)"
+                    rotate={seededRandom(idx * 7) * 90}
+                  />
+                );
+              return <Heart key={idx} x={item.x} y={item.y} size={item.size} delay={item.delay} />;
+            })}
         </div>
       </div>
 
       {/* ground hint — hidden on mobile to avoid overlap with button */}
       <div
         aria-hidden
-        className="absolute left-0 right-0 pointer-events-none hidden sm:block"
+        className="pointer-events-none absolute right-0 left-0 hidden sm:block"
         style={{ bottom: "8%", height: 1, background: "var(--ink)", opacity: 0.15, zIndex: 1 }}
       />
       <p
-        className="font-hand absolute left-1/2 -translate-x-1/2 text-lg sm:text-xl pointer-events-none hidden sm:block"
+        className="font-hand pointer-events-none absolute left-1/2 hidden -translate-x-1/2 text-lg sm:block sm:text-xl"
         style={{ bottom: "5%", color: "var(--ink)", opacity: 0.55, zIndex: 1 }}
       >
         ↓ tap the booth to enter ↓
       </p>
 
       {/* centre column */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 sm:gap-7" style={{ zIndex: 10 }}>
+      <div
+        className="absolute inset-0 flex flex-col items-center justify-center gap-6 sm:gap-7"
+        style={{ zIndex: 10 }}
+      >
         {/* halo */}
         <div
           aria-hidden
-          className="absolute animate-halo pointer-events-none"
+          className="animate-halo pointer-events-none absolute"
           style={{
             width: "min(720px, 90vw)",
             aspectRatio: "1",
@@ -253,11 +301,11 @@ export function BoothScreen({ onStart }: BoothScreenProps) {
 
           {/* corner sparkles — always shown (intentional decoration around booth) */}
           <div style={{ position: "absolute", inset: 0, zIndex: 10, pointerEvents: "none" }}>
-            <Star5 x={-8}  y={-2}  size={36} color="var(--gold)" rotate={-15} />
-            <Star5 x={108} y={-2}  size={28} color="var(--red)"  rotate={20}  />
-            <Sparkle x={-4}  y={92} size={28} color="var(--red)" />
+            <Star5 x={-8} y={-2} size={36} color="var(--gold)" rotate={-15} />
+            <Star5 x={108} y={-2} size={28} color="var(--red)" rotate={20} />
+            <Sparkle x={-4} y={92} size={28} color="var(--red)" />
             <Sparkle x={104} y={50} size={22} color="var(--ink)" />
-            <Heart   x={102} y={92} size={26} />
+            <Heart x={102} y={92} size={26} />
           </div>
         </div>
 
@@ -265,9 +313,7 @@ export function BoothScreen({ onStart }: BoothScreenProps) {
         {phase === "idle" ? (
           <button
             onClick={handleStart}
-            className="font-display cursor-pointer transition-transform duration-200
-              hover:-translate-y-0.5 active:translate-y-1
-              text-xl sm:text-2xl px-6 sm:px-8 py-4 sm:py-5 rounded-xl"
+            className="font-display cursor-pointer rounded-xl px-6 py-4 text-xl transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-1 sm:px-8 sm:py-5 sm:text-2xl"
             style={{
               position: "relative",
               zIndex: 20,
@@ -282,8 +328,13 @@ export function BoothScreen({ onStart }: BoothScreenProps) {
           </button>
         ) : (
           <p
-            className="font-display text-2xl animate-twinkle"
-            style={{ color: "var(--red)", letterSpacing: "0.1em", zIndex: 20, position: "relative" }}
+            className="font-display animate-twinkle text-2xl"
+            style={{
+              color: "var(--red)",
+              letterSpacing: "0.1em",
+              zIndex: 20,
+              position: "relative",
+            }}
           >
             ENTERING THE BOOTH…
           </p>

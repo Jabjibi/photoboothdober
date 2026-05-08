@@ -16,19 +16,27 @@ export interface LayoutDef {
 
 export const LAYOUTS: Record<LayoutId, LayoutDef> = {
   strip4: {
-    id: "strip4", name: "4 Cell Strip", shots: 4,
-    render: (p, s, m) => <Strip4  photos={p} styleId={s} meta={m} />,
+    id: "strip4",
+    name: "4 Cell Strip",
+    shots: 4,
+    render: (p, s, m) => <Strip4 photos={p} styleId={s} meta={m} />,
   },
   trip3h: {
-    id: "trip3h", name: "3 Across", shots: 3,
+    id: "trip3h",
+    name: "3 Across",
+    shots: 3,
     render: (p, s, m) => <Strip3H photos={p} styleId={s} meta={m} />,
   },
   trip3v: {
-    id: "trip3v", name: "3 Stacked", shots: 3,
+    id: "trip3v",
+    name: "3 Stacked",
+    shots: 3,
     render: (p, s, m) => <Strip3V photos={p} styleId={s} meta={m} />,
   },
   card1: {
-    id: "card1", name: "Creative License", shots: 1,
+    id: "card1",
+    name: "Creative License",
+    shots: 1,
     render: (p, s, m) => <CardFrame photos={p} styleId={s} meta={m} />,
   },
 };

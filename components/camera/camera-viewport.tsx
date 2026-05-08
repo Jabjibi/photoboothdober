@@ -30,7 +30,7 @@ export function CameraViewport({
 }: CameraViewportProps) {
   return (
     <div
-      className="flex-1 relative overflow-hidden rounded-2xl flex items-center justify-center min-h-[280px]"
+      className="relative flex min-h-[280px] flex-1 items-center justify-center overflow-hidden rounded-2xl"
       style={{
         background: "var(--ink)",
         border: "4px solid var(--ink)",
@@ -40,7 +40,7 @@ export function CameraViewport({
       {/* pelmet stripe */}
       <div
         aria-hidden
-        className="absolute top-0 left-0 right-0 z-[4]"
+        className="absolute top-0 right-0 left-0 z-[4]"
         style={{
           height: 22,
           background: "repeating-linear-gradient(90deg, var(--red) 0 18px, var(--paper) 18px 36px)",
@@ -52,7 +52,7 @@ export function CameraViewport({
         ref={videoRef}
         playsInline
         muted
-        className="w-full h-full object-cover"
+        className="h-full w-full object-cover"
         style={{ filter: filterCss, transform: "scaleX(-1)" }}
       />
 
@@ -61,23 +61,26 @@ export function CameraViewport({
         <div
           key={i}
           aria-hidden
-          className="absolute w-[26px] h-[26px] z-[5]"
+          className="absolute z-[5] h-[26px] w-[26px]"
           style={{
             ...pos,
-            borderTop:    "top"    in pos ? "none" : "3px solid var(--paper)",
+            borderTop: "top" in pos ? "none" : "3px solid var(--paper)",
             borderBottom: "bottom" in pos ? "none" : "3px solid var(--paper)",
-            borderLeft:   "left"   in pos ? "none" : "3px solid var(--paper)",
-            borderRight:  "right"  in pos ? "none" : "3px solid var(--paper)",
+            borderLeft: "left" in pos ? "none" : "3px solid var(--paper)",
+            borderRight: "right" in pos ? "none" : "3px solid var(--paper)",
           }}
         />
       ))}
 
       {/* REC indicator */}
       <div
-        className="absolute top-8 left-5 z-[6] flex items-center gap-2 font-mono-booth text-[10px] tracking-[0.18em]"
+        className="font-mono-booth absolute top-8 left-5 z-[6] flex items-center gap-2 text-[10px] tracking-[0.18em]"
         style={{ color: "var(--paper)" }}
       >
-        <span className="inline-block w-2.5 h-2.5 rounded-full animate-twinkle" style={{ background: "var(--red)" }} />
+        <span
+          className="animate-twinkle inline-block h-2.5 w-2.5 rounded-full"
+          style={{ background: "var(--red)" }}
+        />
         REC · {String(shotIdx + 1).padStart(2, "0")} / {String(totalShots).padStart(2, "0")}
       </div>
 
@@ -90,7 +93,8 @@ export function CameraViewport({
           <span
             className="font-display leading-none"
             style={{
-              fontSize: typeof count === "number" ? "clamp(120px,18vw,240px)" : "clamp(48px,8vw,100px)",
+              fontSize:
+                typeof count === "number" ? "clamp(120px,18vw,240px)" : "clamp(48px,8vw,100px)",
               color: "var(--paper)",
               WebkitTextStroke: "4px var(--ink)",
             }}
@@ -102,20 +106,26 @@ export function CameraViewport({
 
       {/* flash overlay */}
       {flash && (
-        <div aria-hidden className="absolute inset-0 z-[8]" style={{ background: "var(--paper)", opacity: 0.92 }} />
+        <div
+          aria-hidden
+          className="absolute inset-0 z-[8]"
+          style={{ background: "var(--paper)", opacity: 0.92 }}
+        />
       )}
 
       {/* camera error */}
       {cameraError && (
         <div
-          className="absolute inset-0 z-[9] flex flex-col items-center justify-center text-center p-8"
+          className="absolute inset-0 z-[9] flex flex-col items-center justify-center p-8 text-center"
           style={{ background: "var(--paper)" }}
         >
-          <p className="font-display text-2xl" style={{ color: "var(--red)" }}>CAMERA OFFLINE</p>
-          <p className="font-mono-booth text-[11px] mt-2 opacity-70">{cameraError}</p>
+          <p className="font-display text-2xl" style={{ color: "var(--red)" }}>
+            CAMERA OFFLINE
+          </p>
+          <p className="font-mono-booth mt-2 text-[11px] opacity-70">{cameraError}</p>
           <button
             onClick={onDemo}
-            className="font-display mt-5 px-5 py-3 rounded-xl cursor-pointer text-sm"
+            className="font-display mt-5 cursor-pointer rounded-xl px-5 py-3 text-sm"
             style={{
               background: "var(--red)",
               color: "var(--paper)",

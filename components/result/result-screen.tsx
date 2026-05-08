@@ -85,13 +85,16 @@ export function ResultScreen({
   }, [printing]);
 
   /* stable confetti positions */
-  const confetti = useMemo(() =>
-    Array.from({ length: 18 }, (_, i) => ({
-      left: seededRand(i * 3) * 100,
-      top: 60 + seededRand(i * 3 + 1) * 60,
-      delay: seededRand(i * 5) * 1.5,
-      isStar: i % 2 === 0,
-    })), []);
+  const confetti = useMemo(
+    () =>
+      Array.from({ length: 18 }, (_, i) => ({
+        left: seededRand(i * 3) * 100,
+        top: 60 + seededRand(i * 3 + 1) * 60,
+        delay: seededRand(i * 5) * 1.5,
+        isStar: i % 2 === 0,
+      })),
+    []
+  );
 
   /* downloads */
   const downloadStrip = async () => {
@@ -160,24 +163,30 @@ export function ResultScreen({
 
   return (
     <div
-      className="relative w-full h-full overflow-auto px-4 sm:px-6 pb-5 sm:pb-6"
+      className="relative h-full w-full overflow-auto px-4 pb-5 sm:px-6 sm:pb-6"
       style={{ paddingTop: 70 }}
     >
       <div className="screen-grid">
         {/* ── LEFT: printer area ────────────────────── */}
-        <div className="flex flex-col gap-4 min-h-0">
-          <div className="flex items-baseline justify-between gap-4 flex-wrap">
+        <div className="flex min-h-0 flex-col gap-4">
+          <div className="flex flex-wrap items-baseline justify-between gap-4">
             <div>
-              <p className="font-mono-booth text-[11px] tracking-[0.2em]" style={{ color: "var(--red)" }}>
+              <p
+                className="font-mono-booth text-[11px] tracking-[0.2em]"
+                style={{ color: "var(--red)" }}
+              >
                 STEP 04 · YOUR PRINT IS READY
               </p>
-              <h2 className="font-display text-3xl sm:text-4xl leading-none" style={{ color: "var(--ink)" }}>
+              <h2
+                className="font-display text-3xl leading-none sm:text-4xl"
+                style={{ color: "var(--ink)" }}
+              >
                 FRESH OFF THE PRESS ✦
               </h2>
             </div>
             <button
               onClick={onRetake}
-              className="font-display shrink-0 text-sm px-4 py-2.5 rounded-lg cursor-pointer hover:-translate-y-px transition-transform"
+              className="font-display shrink-0 cursor-pointer rounded-lg px-4 py-2.5 text-sm transition-transform hover:-translate-y-px"
               style={{
                 border: "2.5px solid var(--ink)",
                 background: "var(--paper)",
@@ -191,7 +200,7 @@ export function ResultScreen({
 
           {/* printer box */}
           <div
-            className="flex-1 relative overflow-hidden rounded-2xl min-h-[300px]"
+            className="relative min-h-[300px] flex-1 overflow-hidden rounded-2xl"
             style={{
               background: "var(--paper-2)",
               border: "3px solid var(--ink)",
@@ -201,7 +210,7 @@ export function ResultScreen({
             {/* dot bg */}
             <div
               aria-hidden
-              className="absolute inset-0 rounded-2xl pointer-events-none"
+              className="pointer-events-none absolute inset-0 rounded-2xl"
               style={{
                 backgroundImage: "radial-gradient(var(--ink) 1px, transparent 1.4px)",
                 backgroundSize: "18px 18px",
@@ -211,7 +220,7 @@ export function ResultScreen({
 
             {/* printer mouth */}
             <div
-              className="absolute top-0 left-0 right-0 z-[5] flex items-center justify-center gap-2 font-mono-booth text-[11px] tracking-[0.2em]"
+              className="font-mono-booth absolute top-0 right-0 left-0 z-[5] flex items-center justify-center gap-2 text-[11px] tracking-[0.2em]"
               style={{
                 height: 60,
                 background: "var(--ink)",
@@ -220,18 +229,18 @@ export function ResultScreen({
               }}
             >
               <span
-                className="inline-block w-2 h-2 rounded-full"
+                className="inline-block h-2 w-2 rounded-full"
                 style={{
                   background: printing ? "var(--red)" : "var(--gold)",
                   animation: printing ? "twinkle 0.6s infinite ease-in-out" : "none",
                 }}
               />
               {printing ? "PRINTING…" : "DONE · TAKE YOUR PRINT"}
-              <span className="opacity-55 ml-3">SPARKLE-PRINT v3.2</span>
+              <span className="ml-3 opacity-55">SPARKLE-PRINT v3.2</span>
             </div>
             <div
               aria-hidden
-              className="absolute z-[6] left-0 right-0"
+              className="absolute right-0 left-0 z-[6]"
               style={{
                 top: 56,
                 height: 8,
@@ -242,12 +251,10 @@ export function ResultScreen({
             {/* strip drop — GSAP target */}
             <div
               ref={stripRef}
-              className="absolute left-1/2 -translate-x-1/2 z-[4] pb-8 flex flex-col items-center gap-5"
+              className="absolute left-1/2 z-[4] flex -translate-x-1/2 flex-col items-center gap-5 pb-8"
               style={{ top: 80 }}
             >
-              <div ref={stripWrapRef}>
-                {layout.render(photos, styleId, meta)}
-              </div>
+              <div ref={stripWrapRef}>{layout.render(photos, styleId, meta)}</div>
               <p
                 className="font-hand text-2xl transition-opacity duration-400"
                 style={{
@@ -267,7 +274,7 @@ export function ResultScreen({
                 <div
                   key={i}
                   aria-hidden
-                  className="absolute pointer-events-none"
+                  className="pointer-events-none absolute"
                   style={{
                     left: `${c.left}%`,
                     top: `${c.top}%`,
@@ -297,13 +304,28 @@ export function ResultScreen({
             }}
           >
             <p className="font-display text-lg">SAVE YOUR MEMORIES</p>
-            <p className="font-mono-booth text-[9px] tracking-[0.18em] opacity-70 mb-4">
+            <p className="font-mono-booth mb-4 text-[9px] tracking-[0.18em] opacity-70">
               EVERYTHING IS YOURS · NO ACCOUNT NEEDED
             </p>
             <div className="flex flex-col gap-2">
-              <DownloadButton icon="◧" title="DOWNLOAD STRIP"  sub="full framed image · PNG"                           onClick={downloadStrip}  />
-              <DownloadButton icon="▦" title="DOWNLOAD PHOTOS" sub={`${photos.filter(Boolean).length} raw shots · JPG`} onClick={downloadPhotos} />
-              <DownloadButton icon="▶" title="DOWNLOAD VIDEO"  sub="animated booth reel · WEBM"                        onClick={downloadVideo}  />
+              <DownloadButton
+                icon="◧"
+                title="DOWNLOAD STRIP"
+                sub="full framed image · PNG"
+                onClick={downloadStrip}
+              />
+              <DownloadButton
+                icon="▦"
+                title="DOWNLOAD PHOTOS"
+                sub={`${photos.filter(Boolean).length} raw shots · JPG`}
+                onClick={downloadPhotos}
+              />
+              <DownloadButton
+                icon="▶"
+                title="DOWNLOAD VIDEO"
+                sub="animated booth reel · WEBM"
+                onClick={downloadVideo}
+              />
             </div>
           </div>
 
@@ -316,12 +338,14 @@ export function ResultScreen({
               boxShadow: "6px 6px 0 var(--ink)",
             }}
           >
-            <p className="font-display text-base" style={{ color: "var(--red)" }}>RECEIPT</p>
+            <p className="font-display text-base" style={{ color: "var(--red)" }}>
+              RECEIPT
+            </p>
             <pre
-              className="font-mono-booth text-[11px] leading-[1.7] mt-2"
+              className="font-mono-booth mt-2 text-[11px] leading-[1.7]"
               style={{ color: "var(--ink)" }}
             >
-{`────────────────────
+              {`────────────────────
 LAYOUT   ${layout.name.toUpperCase()}
 STYLE    ${frameStyle.name.toUpperCase()}
 SHOTS    ${photos.length}
@@ -334,8 +358,7 @@ TOTAL    FREE ✦`}
 
           <button
             onClick={onRestart}
-            className="font-display w-full py-4 rounded-xl text-xl tracking-[0.06em] cursor-pointer
-              hover:-translate-y-0.5 active:translate-y-0.5 transition-transform"
+            className="font-display w-full cursor-pointer rounded-xl py-4 text-xl tracking-[0.06em] transition-transform hover:-translate-y-0.5 active:translate-y-0.5"
             style={{
               background: "var(--red)",
               color: "var(--paper)",

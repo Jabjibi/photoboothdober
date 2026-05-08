@@ -10,10 +10,10 @@ export function BoothNav({ currentStep }: BoothNavProps) {
   const currentIndex = STEPS.indexOf(currentStep);
 
   return (
-    <div className="absolute top-4 left-0 right-0 z-50 flex justify-between items-center px-4 sm:px-6 pointer-events-none">
+    <div className="pointer-events-none absolute top-4 right-0 left-0 z-50 flex items-center justify-between px-4 sm:px-6">
       {/* Brand mark */}
       <div
-        className="font-display flex items-center gap-2 sm:gap-2.5 pointer-events-auto"
+        className="font-display pointer-events-auto flex items-center gap-2 sm:gap-2.5"
         style={{
           background: "var(--ink)",
           color: "var(--paper)",
@@ -46,7 +46,7 @@ export function BoothNav({ currentStep }: BoothNavProps) {
 
       {/* Step pill */}
       <div
-        className="font-mono-booth hidden sm:flex items-center gap-2"
+        className="font-mono-booth hidden items-center gap-2 sm:flex"
         style={{
           background: "var(--paper)",
           border: "2px solid var(--ink)",

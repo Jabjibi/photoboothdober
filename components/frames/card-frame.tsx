@@ -33,7 +33,11 @@ export function CardFrame({ photos, styleId, meta }: FrameProps) {
       >
         {photos[0] ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={photos[0]} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+          <img
+            src={photos[0]}
+            alt=""
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          />
         ) : (
           <div
             style={{
@@ -92,16 +96,19 @@ export function CardFrame({ photos, styleId, meta }: FrameProps) {
             <br />
             LICENSE
           </div>
-          <div className="font-hand" style={{ fontSize: 22, color: s.palette.accent, marginTop: 2, lineHeight: 1 }}>
+          <div
+            className="font-hand"
+            style={{ fontSize: 22, color: s.palette.accent, marginTop: 2, lineHeight: 1 }}
+          >
             {meta.name || "your name"}
           </div>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 4, fontSize: 9 }}>
           {[
-            { label: "NAME",  value: meta.name     || "—" },
-            { label: "DOB",   value: meta.birthday || "—" },
+            { label: "NAME", value: meta.name || "—" },
+            { label: "DOB", value: meta.birthday || "—" },
             { label: "VALID", value: "DOES NOT EXPIRE" },
-            { label: "TITLE", value: meta.title    || "TEXTURE USER" },
+            { label: "TITLE", value: meta.title || "TEXTURE USER" },
           ].map(({ label, value }) => (
             <div key={label}>
               <div className="font-mono-booth" style={{ opacity: 0.6, letterSpacing: "0.1em" }}>

@@ -34,8 +34,28 @@ export function BoothCanvas({ curtainOpen = false }: BoothCanvasProps) {
       <BoothTopSign />
 
       {/* sign legs */}
-      <div style={{ position: "absolute", left: "12%", top: "14.7%", width: 6, height: "2.3%", background: "var(--ink)", zIndex: 4 }} />
-      <div style={{ position: "absolute", right: "12%", top: "14.7%", width: 6, height: "2.3%", background: "var(--ink)", zIndex: 4 }} />
+      <div
+        style={{
+          position: "absolute",
+          left: "12%",
+          top: "14.7%",
+          width: 6,
+          height: "2.3%",
+          background: "var(--ink)",
+          zIndex: 4,
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          right: "12%",
+          top: "14.7%",
+          width: 6,
+          height: "2.3%",
+          background: "var(--ink)",
+          zIndex: 4,
+        }}
+      />
 
       {/* BOOTH BODY */}
       <div
@@ -70,7 +90,16 @@ export function BoothCanvas({ curtainOpen = false }: BoothCanvasProps) {
         <BoothCurtainArea curtainOpen={curtainOpen} />
 
         {/* base step */}
-        <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: "3.7%", background: "var(--ink)" }} />
+        <div
+          style={{
+            position: "absolute",
+            left: 0,
+            right: 0,
+            bottom: 0,
+            height: "3.7%",
+            background: "var(--ink)",
+          }}
+        />
 
         {/* mini stickers */}
         <Star5 x={42} y={8} size={20} color="var(--gold)" rotate={-8} delay={0.2} />

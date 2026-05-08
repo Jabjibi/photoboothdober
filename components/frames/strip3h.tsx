@@ -25,9 +25,13 @@ export function Strip3H({ photos, styleId, meta }: FrameProps) {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "baseline",
-          color: (isNews || isFairy) ? s.palette.ink : s.palette.paper,
+          color: isNews || isFairy ? s.palette.ink : s.palette.paper,
           paddingBottom: 8,
-          borderBottom: isNews ? `2px double ${s.palette.ink}` : isFairy ? `1px dashed ${s.palette.ink}` : `1px dashed ${s.palette.paper}`,
+          borderBottom: isNews
+            ? `2px double ${s.palette.ink}`
+            : isFairy
+              ? `1px dashed ${s.palette.ink}`
+              : `1px dashed ${s.palette.paper}`,
           marginBottom: 10,
         }}
       >
@@ -58,7 +62,7 @@ export function Strip3H({ photos, styleId, meta }: FrameProps) {
           marginTop: 10,
           display: "flex",
           justifyContent: "space-between",
-          color: (isNews || isFairy) ? s.palette.ink : s.palette.paper,
+          color: isNews || isFairy ? s.palette.ink : s.palette.paper,
           fontFamily: "var(--font-dm-mono), monospace",
           fontSize: 9,
           letterSpacing: "0.18em",
