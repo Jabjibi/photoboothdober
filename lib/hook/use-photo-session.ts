@@ -1,6 +1,6 @@
 "use client";
 
-import { RefObject, useRef, useState } from "react";
+import { RefObject, useState } from "react";
 import { FILTERS, type FilterId } from "./use-filter";
 
 const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
