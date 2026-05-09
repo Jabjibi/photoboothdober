@@ -1,4 +1,5 @@
 import { FILTERS, type FilterId } from "@/lib/hook/use-filter";
+import w from "@/lib/wording.json";
 
 interface FilterRowProps {
   filter: FilterId;
@@ -9,7 +10,7 @@ interface FilterRowProps {
 export function FilterRow({ filter, setFilter, running }: FilterRowProps) {
   return (
     <div className="flex items-center gap-2 overflow-x-auto pb-1">
-      <p className="font-mono-booth shrink-0 text-[10px] tracking-[0.18em] opacity-70">FILTER ›</p>
+      <p className="font-mono-booth shrink-0 text-[10px] tracking-[0.18em] opacity-70">{w.camera.filter.label}</p>
       {FILTERS.map((f) => {
         const active = filter === f.id;
         return (

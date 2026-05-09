@@ -1,3 +1,5 @@
+import w from "@/lib/wording.json";
+
 interface ShotGridProps {
   photos: string[];
   totalShots: number;
@@ -17,7 +19,7 @@ export function ShotGrid({ photos, totalShots, shotIdx, running, layoutName }: S
       }}
     >
       <p className="font-display text-base" style={{ color: "var(--red)" }}>
-        SHOTS
+        {w.camera.shotGrid.title}
       </p>
       <p className="font-mono-booth mb-3 text-[9px] tracking-[0.18em] opacity-60">
         {layoutName.toUpperCase()} · {totalShots} REQUIRED

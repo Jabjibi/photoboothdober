@@ -6,6 +6,7 @@ import type { LayoutId, StyleId, FrameMeta } from "@/lib/booth-context";
 import { LAYOUTS, FRAME_STYLES } from "@/components/frames";
 import { exportFrameToPng } from "@/lib/frame-canvas";
 import { DownloadButton } from "./download-button";
+import w from "@/lib/wording.json";
 import { Sparkle } from "@/components/shared/sparkle";
 import { Star5 } from "@/components/shared/star5";
 
@@ -103,7 +104,7 @@ export function ResultScreen({
       downloadDataUrl(data, "sparkle-booth-strip.png");
     } catch (err) {
       console.error("Strip export failed:", err);
-      alert("Strip export failed — try downloading individual photos instead.");
+      alert(w.result.errors.strip);
     }
   };
 
@@ -155,7 +156,7 @@ export function ResultScreen({
       }
       rec.stop();
     } catch {
-      alert("Animated export not supported in this browser — use Download Photos instead.");
+      alert(w.result.errors.video);
     }
   };
 
@@ -175,13 +176,13 @@ export function ResultScreen({
                 className="font-mono-booth text-[11px] tracking-[0.2em]"
                 style={{ color: "var(--red)" }}
               >
-                STEP 04 · YOUR PRINT IS READY
+                {w.result.header.step}
               </p>
               <h2
                 className="font-display text-3xl leading-none sm:text-4xl"
                 style={{ color: "var(--ink)" }}
               >
-                FRESH OFF THE PRESS ✦
+                {w.result.header.title}
               </h2>
             </div>
             <button
@@ -194,7 +195,7 @@ export function ResultScreen({
                 boxShadow: "0 4px 0 var(--ink)",
               }}
             >
-              ↺ retake shots
+              {w.result.header.retake}
             </button>
           </div>
 
@@ -235,8 +236,8 @@ export function ResultScreen({
                   animation: printing ? "twinkle 0.6s infinite ease-in-out" : "none",
                 }}
               />
-              {printing ? "PRINTING…" : "DONE · TAKE YOUR PRINT"}
-              <span className="ml-3 opacity-55">SPARKLE-PRINT v3.2</span>
+              {printing ? w.result.printer.printing : w.result.printer.done}
+              <span className="ml-3 opacity-55">{w.result.printer.version}</span>
             </div>
             <div
               aria-hidden
@@ -264,7 +265,7 @@ export function ResultScreen({
                   transitionDelay: "1.2s",
                 }}
               >
-                ✦ tear here ✦
+                {w.result.printer.tearHere}
               </p>
             </div>
 
@@ -303,29 +304,14 @@ export function ResultScreen({
               boxShadow: "6px 6px 0 var(--red)",
             }}
           >
-            <p className="font-display text-lg">SAVE YOUR MEMORIES</p>
+            <p className="font-display text-lg">{w.result.downloads.sectionTitle}</p>
             <p className="font-mono-booth mb-4 text-[9px] tracking-[0.18em] opacity-70">
-              EVERYTHING IS YOURS · NO ACCOUNT NEEDED
+              {w.result.downloads.sectionSub}
             </p>
             <div className="flex flex-col gap-2">
-              <DownloadButton
-                icon="◧"
-                title="DOWNLOAD STRIP"
-                sub="full framed image · PNG"
-                onClick={downloadStrip}
-              />
-              <DownloadButton
-                icon="▦"
-                title="DOWNLOAD PHOTOS"
-                sub={`${photos.filter(Boolean).length} raw shots · JPG`}
-                onClick={downloadPhotos}
-              />
-              <DownloadButton
-                icon="▶"
-                title="DOWNLOAD VIDEO"
-                sub="animated booth reel · WEBM"
-                onClick={downloadVideo}
-              />
+              <DownloadButton icon={w.result.downloads.strip.icon}  title={w.result.downloads.strip.label}  sub={w.result.downloads.strip.sub} onClick={downloadStrip} />
+              <DownloadButton icon={w.result.downloads.photos.icon} title={w.result.downloads.photos.label} sub={`${photos.filter(Boolean).length} ${w.result.downloads.photos.sub}`} onClick={downloadPhotos} />
+              <DownloadButton icon={w.result.downloads.video.icon}  title={w.result.downloads.video.label}  sub={w.result.downloads.video.sub} onClick={downloadVideo} />
             </div>
           </div>
 
@@ -339,7 +325,7 @@ export function ResultScreen({
             }}
           >
             <p className="font-display text-base" style={{ color: "var(--red)" }}>
-              RECEIPT
+              {w.result.receipt.title}
             </p>
             <pre
               className="font-mono-booth mt-2 text-[11px] leading-[1.7]"
@@ -366,7 +352,7 @@ TOTAL    FREE ✦`}
               boxShadow: "0 6px 0 var(--ink)",
             }}
           >
-            ▸ ANOTHER ROUND
+            {w.result.anotherRound}
           </button>
         </div>
       </div>

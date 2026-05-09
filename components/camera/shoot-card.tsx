@@ -1,3 +1,5 @@
+import w from "@/lib/wording.json";
+
 interface ShootCardProps {
   cameraReady: boolean;
   cameraError: string | null;
@@ -23,9 +25,9 @@ export function ShootCard({
         boxShadow: "6px 6px 0 var(--red)",
       }}
     >
-      <p className="font-hand text-2xl leading-none">ready? strike a pose ✦</p>
+      <p className="font-hand text-2xl leading-none">{w.camera.shootCard.title}</p>
       <p className="font-mono-booth mt-2 text-[10px] tracking-[0.16em] opacity-70">
-        3-SECOND TIMER PER SHOT · AUTO-PRINT WHEN DONE
+        {w.camera.shootCard.subtitle}
       </p>
       <button
         onClick={onStart}
@@ -38,11 +40,11 @@ export function ShootCard({
           opacity: !cameraReady && !cameraError ? 0.5 : 1,
         }}
       >
-        {running ? "SHOOTING…" : photosDone ? "↺ RETAKE ALL" : "▸ START SHOOTING ◂"}
+        {running ? w.camera.shootCard.shooting : photosDone ? w.camera.shootCard.retake : w.camera.shootCard.start}
       </button>
       {!cameraReady && !cameraError && (
         <p className="font-mono-booth mt-2 text-[9px] tracking-[0.15em] opacity-70">
-          WAITING FOR CAMERA…
+          {w.camera.shootCard.waitingCamera}
         </p>
       )}
     </div>

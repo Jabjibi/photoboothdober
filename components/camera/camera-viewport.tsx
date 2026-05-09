@@ -1,4 +1,5 @@
 import { RefObject } from "react";
+import w from "@/lib/wording.json";
 
 interface CameraViewportProps {
   videoRef: RefObject<HTMLVideoElement | null>;
@@ -120,7 +121,7 @@ export function CameraViewport({
           style={{ background: "var(--paper)" }}
         >
           <p className="font-display text-2xl" style={{ color: "var(--red)" }}>
-            CAMERA OFFLINE
+            {w.camera.viewport.offline}
           </p>
           <p className="font-mono-booth mt-2 text-[11px] opacity-70">{cameraError}</p>
           <button
@@ -133,7 +134,7 @@ export function CameraViewport({
               boxShadow: "0 4px 0 var(--ink)",
             }}
           >
-            ▸ USE DEMO PHOTOS
+            {w.camera.viewport.useDemo}
           </button>
         </div>
       )}

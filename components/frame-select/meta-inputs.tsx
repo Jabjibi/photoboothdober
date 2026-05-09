@@ -1,5 +1,6 @@
 import type { LayoutId, FrameMeta } from "@/lib/booth-context";
 import { FrameField } from "./frame-field";
+import w from "@/lib/wording.json";
 
 interface MetaInputsProps {
   layoutId: LayoutId;
@@ -20,48 +21,23 @@ export function MetaInputs({ layoutId, meta, updateMeta, onConfirm }: MetaInputs
     >
       <div>
         <p className="font-display text-base" style={{ color: "var(--red)" }}>
-          CUSTOMIZE
+          {w.frameSelect.meta.title}
         </p>
         <p className="font-mono-booth text-[9px] tracking-[0.18em] opacity-60">
-          {layoutId === "card1" ? "REQUIRED FOR LICENSE" : "OPTIONAL HEADER COPY"}
+          {layoutId === "card1" ? w.frameSelect.meta.cardRequired : w.frameSelect.meta.cardOptional}
         </p>
       </div>
 
       {layoutId === "card1" ? (
         <>
-          <FrameField
-            label="NAME"
-            value={meta.name ?? ""}
-            onChange={updateMeta("name")}
-            placeholder="ANNA SPARKS"
-          />
-          <FrameField
-            label="BIRTHDAY"
-            value={meta.birthday ?? ""}
-            onChange={updateMeta("birthday")}
-            placeholder="07.26.2000"
-          />
-          <FrameField
-            label="TITLE"
-            value={meta.title ?? ""}
-            onChange={updateMeta("title")}
-            placeholder="TEXTURE USER"
-          />
+          <FrameField label={w.frameSelect.meta.fields.name.label}     value={meta.name     ?? ""} onChange={updateMeta("name")}     placeholder={w.frameSelect.meta.fields.name.placeholder} />
+          <FrameField label={w.frameSelect.meta.fields.birthday.label} value={meta.birthday ?? ""} onChange={updateMeta("birthday")} placeholder={w.frameSelect.meta.fields.birthday.placeholder} />
+          <FrameField label={w.frameSelect.meta.fields.titleCard.label} value={meta.title   ?? ""} onChange={updateMeta("title")}    placeholder={w.frameSelect.meta.fields.titleCard.placeholder} />
         </>
       ) : (
         <>
-          <FrameField
-            label="HEADER"
-            value={meta.title ?? ""}
-            onChange={updateMeta("title")}
-            placeholder="PHOTOSTRIP"
-          />
-          <FrameField
-            label="DATE"
-            value={meta.date ?? ""}
-            onChange={updateMeta("date")}
-            placeholder="MAY 2026"
-          />
+          <FrameField label={w.frameSelect.meta.fields.header.label} value={meta.title ?? ""} onChange={updateMeta("title")} placeholder={w.frameSelect.meta.fields.header.placeholder} />
+          <FrameField label={w.frameSelect.meta.fields.date.label}   value={meta.date  ?? ""} onChange={updateMeta("date")}  placeholder={w.frameSelect.meta.fields.date.placeholder} />
         </>
       )}
 
@@ -78,7 +54,7 @@ export function MetaInputs({ layoutId, meta, updateMeta, onConfirm }: MetaInputs
           boxShadow: "0 6px 0 var(--ink)",
         }}
       >
-        ▸ ENTER THE BOOTH ✦
+        {w.frameSelect.meta.confirm}
       </button>
     </div>
   );

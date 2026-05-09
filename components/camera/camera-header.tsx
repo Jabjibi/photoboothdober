@@ -1,3 +1,5 @@
+import w from "@/lib/wording.json";
+
 interface CameraHeaderProps {
   totalShots: number;
   onBack: () => void;
@@ -8,7 +10,7 @@ export function CameraHeader({ totalShots, onBack }: CameraHeaderProps) {
     <div className="flex flex-wrap items-start justify-between gap-4">
       <div>
         <p className="font-mono-booth text-[11px] tracking-[0.2em]" style={{ color: "var(--red)" }}>
-          STEP 03 · INSIDE THE BOOTH
+          {w.camera.header.step}
         </p>
         <h2
           className="font-display text-3xl leading-none sm:text-4xl"
@@ -27,7 +29,7 @@ export function CameraHeader({ totalShots, onBack }: CameraHeaderProps) {
           boxShadow: "0 4px 0 var(--ink)",
         }}
       >
-        ← change frame
+        {w.camera.header.back}
       </button>
     </div>
   );

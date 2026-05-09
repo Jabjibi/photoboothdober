@@ -4,6 +4,7 @@ import { useMemo, useRef, useState, useSyncExternalStore } from "react";
 import gsap from "gsap";
 
 import { BoothCanvas } from "@/components/booth/booth-canvas";
+import w from "@/lib/wording.json";
 import { BoothCanvasMobile } from "@/components/form-moblie/booth-canvas-mobile";
 import { Sparkle } from "@/components/shared/sparkle";
 import { Star5 } from "@/components/shared/star5";
@@ -76,26 +77,26 @@ export function BoothScreen({ onStart }: BoothScreenProps) {
       {/* corner — top left (hidden on mobile to avoid overlap) */}
       <div className="pointer-events-none absolute top-20 left-6 z-10 hidden sm:block">
         <p className="font-hand text-2xl leading-none sm:text-3xl" style={{ color: "var(--red)" }}>
-          ✦ step right up
+          {w.booth.screen.cornerLeft}
         </p>
         <p
           className="font-mono-booth mt-1 text-[10px] sm:text-[11px]"
           style={{ letterSpacing: "0.15em", color: "var(--ink)" }}
         >
-          EST. 2026 · OPEN 24H
+          {w.booth.screen.cornerLeftSub}
         </p>
       </div>
 
       {/* corner — top right (hidden on mobile to avoid overlap) */}
       <div className="pointer-events-none absolute top-20 right-6 z-10 hidden text-right sm:block">
         <p className="font-news text-xl leading-none sm:text-2xl" style={{ color: "var(--ink)" }}>
-          NO COINS REQUIRED
+          {w.booth.screen.cornerRight}
         </p>
         <p
           className="font-mono-booth mt-1 text-[10px] sm:text-[11px]"
           style={{ letterSpacing: "0.15em", color: "var(--red)" }}
         >
-          ONE WINK · ONE PRINT
+          {w.booth.screen.cornerRightSub}
         </p>
       </div>
 
@@ -173,7 +174,7 @@ export function BoothScreen({ onStart }: BoothScreenProps) {
         className="font-hand pointer-events-none absolute left-1/2 hidden -translate-x-1/2 text-lg sm:block sm:text-xl"
         style={{ bottom: "5%", color: "var(--ink)", opacity: 0.55, zIndex: 1 }}
       >
-        ↓ tap the booth to enter ↓
+        {w.booth.screen.groundHint}
       </p>
 
       {/* centre column */}
@@ -243,7 +244,7 @@ export function BoothScreen({ onStart }: BoothScreenProps) {
                 boxShadow: "4px 4px 0 var(--red)",
               }}
             >
-              4 SHOTS
+              {w.booth.screen.floatShots}
             </div>
           </div>
 
@@ -269,7 +270,7 @@ export function BoothScreen({ onStart }: BoothScreenProps) {
                 boxShadow: "4px 4px 0 var(--ink)",
               }}
             >
-              cute mode ✦ on
+              {w.booth.screen.floatMode}
             </div>
           </div>
 
@@ -295,7 +296,7 @@ export function BoothScreen({ onStart }: BoothScreenProps) {
                 letterSpacing: "0.1em",
               }}
             >
-              ★ NEW ✿ 2026
+              {w.booth.screen.floatNew}
             </div>
           </div>
 
@@ -324,7 +325,7 @@ export function BoothScreen({ onStart }: BoothScreenProps) {
               boxShadow: "0 6px 0 var(--ink)",
             }}
           >
-            ▸ START PHOTOSHOOT ◂
+            {w.booth.screen.ctaIdle}
           </button>
         ) : (
           <p
@@ -336,7 +337,7 @@ export function BoothScreen({ onStart }: BoothScreenProps) {
               position: "relative",
             }}
           >
-            ENTERING THE BOOTH…
+            {w.booth.screen.ctaEntering}
           </p>
         )}
       </div>

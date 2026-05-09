@@ -1,12 +1,8 @@
 import type { LayoutId } from "@/lib/booth-context";
 import { LayoutThumb } from "./layout-thumb";
+import w from "@/lib/wording.json";
 
-const LAYOUT_CARDS: { id: LayoutId; title: string; sub: string }[] = [
-  { id: "strip4", title: "4 SHOT STRIP", sub: "classic vertical · 4 frames" },
-  { id: "trip3h", title: "TRIPTYCH", sub: "3 wide · landscape" },
-  { id: "trip3v", title: "STACK 3", sub: "3 tall · vertical" },
-  { id: "card1", title: "CREDENTIAL", sub: "1 photo + name + dob" },
-];
+const LAYOUT_CARDS = w.frameSelect.layouts as { id: LayoutId; title: string; sub: string }[];
 
 interface LayoutPickerProps {
   layoutId: LayoutId;

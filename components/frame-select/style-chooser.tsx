@@ -1,5 +1,6 @@
 import type { StyleId } from "@/lib/booth-context";
 import { FRAME_STYLES } from "@/components/frames";
+import w from "@/lib/wording.json";
 
 const STYLE_CARDS: { id: StyleId; swatch: string[] }[] = [
   { id: "classic", swatch: ["#161313", "#fbf6ee", "#d8201f"] },
@@ -24,10 +25,10 @@ export function StyleChooser({ styleId, onSelect }: StyleChooserProps) {
       }}
     >
       <p className="font-display text-base" style={{ color: "var(--red)" }}>
-        FRAME STYLE
+        {w.frameSelect.style.title}
       </p>
       <p className="font-mono-booth mb-3 text-[9px] tracking-[0.18em] opacity-60">
-        FOUR LOOKS · PICK ONE
+        {w.frameSelect.style.subtitle}
       </p>
       <div className="grid grid-cols-2 gap-2.5">
         {STYLE_CARDS.map((c) => {

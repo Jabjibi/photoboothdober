@@ -1,3 +1,5 @@
+import w from "@/lib/wording.json";
+
 type Step = "BOOTH" | "FRAME" | "CAMERA" | "PRINT";
 
 interface BoothNavProps {
@@ -35,12 +37,12 @@ export function BoothNav({ currentStep }: BoothNavProps) {
             flexShrink: 0,
           }}
         />
-        <span>SPARKLE BOOTH</span>
+        <span>{w.booth.nav.title}</span>
         <span
           className="font-mono-booth hidden sm:inline"
           style={{ opacity: 0.5, fontSize: 11, marginLeft: 6, letterSpacing: "0.1em" }}
         >
-          EST · 26
+          {w.booth.nav.established}
         </span>
       </div>
 

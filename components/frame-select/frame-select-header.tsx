@@ -1,3 +1,5 @@
+import w from "@/lib/wording.json";
+
 interface FrameSelectHeaderProps {
   onBack: () => void;
 }
@@ -7,16 +9,16 @@ export function FrameSelectHeader({ onBack }: FrameSelectHeaderProps) {
     <div className="flex flex-wrap items-start justify-between gap-4">
       <div>
         <p className="font-mono-booth text-[11px] tracking-[0.2em]" style={{ color: "var(--red)" }}>
-          STEP 02 · CHOOSE YOUR FRAME
+          {w.frameSelect.header.step}
         </p>
         <h2
           className="font-display text-3xl leading-none sm:text-4xl"
           style={{ color: "var(--ink)" }}
         >
-          PICK A LAYOUT, PICK A VIBE.
+          {w.frameSelect.header.title}
         </h2>
         <p className="font-hand mt-1 text-xl sm:text-2xl" style={{ color: "var(--red)" }}>
-          the booth is warming up ✦
+          {w.frameSelect.header.subtitle}
         </p>
       </div>
       <button
@@ -29,7 +31,7 @@ export function FrameSelectHeader({ onBack }: FrameSelectHeaderProps) {
           boxShadow: "0 4px 0 var(--ink)",
         }}
       >
-        ← back
+        {w.frameSelect.header.back}
       </button>
     </div>
   );
