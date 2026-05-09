@@ -55,21 +55,21 @@ export function CameraScreen({ layoutId, onComplete, onBack }: CameraScreenProps
           <FilterRow filter={filter} setFilter={setFilter} running={running} />
         </div>
 
-        {/* ── RIGHT: shot tracker + controls ── */}
+        {/* ── RIGHT: controls + shot tracker ── */}
         <div className="flex flex-col gap-4">
-          <ShotGrid
-            photos={photos}
-            totalShots={totalShots}
-            shotIdx={shotIdx}
-            running={running}
-            layoutName={layout.name}
-          />
           <ShootCard
             cameraReady={cameraReady}
             cameraError={cameraError}
             running={running}
             photosDone={photos.length === totalShots}
             onStart={runSession}
+          />
+          <ShotGrid
+            photos={photos}
+            totalShots={totalShots}
+            shotIdx={shotIdx}
+            running={running}
+            layoutName={layout.name}
           />
           <TipsCard />
         </div>
