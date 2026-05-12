@@ -42,7 +42,3 @@ next-env.d.ts
 
 # agents skills
 /.agents
-
-# agents .md
-CLAUDE.md*
-CHANGELOG.md*

@@ -6,6 +6,31 @@ All notable changes to Sparkle Booth are recorded here.
 
 ## [Unreleased]
 
+### 2026-05-13 — Result screen component refactor + mobile fixes
+
+**Added**
+- `components/result/result-header.tsx` — step label + h2 title + retake button (แยกออกจาก result-screen)
+- `components/result/printer-mouth.tsx` — status bar บนสุดของ printer box (dot indicator + status text + version)
+- `components/result/printer-box.tsx` — printer container ทั้งหมด: dot bg, PrinterMouth, GSAP drop animation, GSAP swing, strip, confetti, `@keyframes confetti`; ย้าย `printing` state + refs + GSAP effects มาไว้ใน component นี้
+- `components/result/downloads-card.tsx` — download buttons card (Strip / Photos / Video)
+- `components/result/receipt-card.tsx` — receipt block (layout / style / shots / date / time)
+
+**Changed**
+- `components/result/result-screen.tsx` — เหลือแค่ orchestrator: download handlers (`downloadStrip`, `downloadPhotos`, `downloadVideo`) + จัด layout → import component ข้างบนมาใช้; แก้ variable shadowing ใน `downloadVideo` (`w`/`h` → `dw`/`dh`)
+- `lib/pixel-filters.ts` (**new file**) — แยก pixel filter helpers ออกจาก `use-photo-session.ts` (`bakeFilter` + 6 primitive ops)
+- `lib/hook/use-photo-session.ts` — import `bakeFilter` จาก `pixel-filters.ts`, ลบ `FILTERS` import ที่ไม่ใช้แล้ว
+- `lib/hook/use-print-animation.ts` (**new**) — แยก GSAP drop + swing logic + `printing` state + refs ออกจาก `printer-box.tsx`; return `{ printing, stripRef, stripWrapRef }`
+- `lib/hook/use-confetti.ts` (**new**) — แยก `seededRand` + `useMemo` confetti positions ออกจาก `printer-box.tsx`; return `ConfettiItem[]`
+- `components/result/printer-box.tsx` — เหลือแค่ JSX; import `usePrintAnimation` + `useConfetti` มาใช้แทน inline logic
+
+**Fixed**
+- `components/result/printer-box.tsx` + `lib/hook/use-print-animation.ts` — tall strip layouts (strip4, strip3v, strip3h) สามารถดูรูปได้ครบทุกช่องบนมือถือ: หลัง GSAP animation เสร็จ (`y: 0`) ล้าง inline transform ด้วย `clearProps: "transform"` แล้วสลับ strip div จาก `absolute` เป็น normal flow (`mx-auto paddingTop: 80`); container ขยายตามเนื้อหาเอง ไม่ต้องวัด height; outer page scroll ใน `result-screen` จัดการ scroll แทน
+- `components/result/printer-mouth.tsx` — text ใน printer status bar ไม่ wrap เป็น 2 บรรทัดอีกต่อไป: เปลี่ยนจาก `justify-center` เป็น `justify-between`, จัดกลุ่ม dot+status ซ้าย / version ขวา, เพิ่ม `whitespace-nowrap`, ลด font size บน mobile (`text-[9px] sm:text-[11px]`)
+- `components/result/result-header.tsx` — h2 title เล็กลงบน mobile: `text-3xl` → `text-2xl sm:text-3xl` ลดการซ้อนทับกับ nav badge
+- `lib/hook/use-photo-session.ts` — filter ไม่ถูก bake ลงรูปใน LINE in-app browser (WKWebView ไม่รองรับ `ctx.filter`): แทน `ctx.filter` ด้วย `getImageData` + `bakeFilter` pixel manipulation ที่ทำงานได้ทุก WebView
+
+---
+
 ### 2026-05-08 — Full responsive layout (mobile / iPad / laptop / desktop)
 
 **Changed**
