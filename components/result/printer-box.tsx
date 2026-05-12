@@ -17,14 +17,15 @@ interface PrinterBoxProps {
 }
 
 export function PrinterBox({ photos, layoutId, styleId, meta }: PrinterBoxProps) {
-  const { printing, stripRef, stripWrapRef } = usePrintAnimation();
+  const { printing, containerMinH, stripRef, stripWrapRef } = usePrintAnimation();
   const confetti = useConfetti();
   const layout = LAYOUTS[layoutId];
 
   return (
     <div
-      className={`relative min-h-[300px] flex-1 rounded-2xl ${printing ? "overflow-hidden" : "overflow-y-auto"}`}
+      className={`relative overflow-hidden rounded-2xl ${printing ? "flex-1" : ""}`}
       style={{
+        minHeight: containerMinH,
         background: "var(--paper-2)",
         border: "3px solid var(--ink)",
         boxShadow: "0 6px 0 var(--ink)",
