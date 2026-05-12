@@ -40,7 +40,11 @@ export function ShootCard({
           opacity: !cameraReady && !cameraError ? 0.5 : 1,
         }}
       >
-        {running ? w.camera.shootCard.shooting : photosDone ? w.camera.shootCard.retake : w.camera.shootCard.start}
+        {running
+          ? w.camera.shootCard.shooting
+          : photosDone
+            ? w.camera.shootCard.retake
+            : w.camera.shootCard.start}
       </button>
       {!cameraReady && !cameraError && (
         <p className="font-mono-booth mt-2 text-[9px] tracking-[0.15em] opacity-70">

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/next";
 import { Bagel_Fat_One, Caveat, Space_Grotesk, Pirata_One, DM_Mono } from "next/font/google";
 import "./globals.css";
 

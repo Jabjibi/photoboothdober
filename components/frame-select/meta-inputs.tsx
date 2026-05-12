@@ -30,14 +30,39 @@ export function MetaInputs({ layoutId, meta, updateMeta, onConfirm }: MetaInputs
 
       {layoutId === "card1" ? (
         <>
-          <FrameField label={w.frameSelect.meta.fields.name.label}     value={meta.name     ?? ""} onChange={updateMeta("name")}     placeholder={w.frameSelect.meta.fields.name.placeholder} />
-          <FrameField label={w.frameSelect.meta.fields.birthday.label} value={meta.birthday ?? ""} onChange={updateMeta("birthday")} placeholder={w.frameSelect.meta.fields.birthday.placeholder} />
-          <FrameField label={w.frameSelect.meta.fields.titleCard.label} value={meta.title   ?? ""} onChange={updateMeta("title")}    placeholder={w.frameSelect.meta.fields.titleCard.placeholder} />
+          <FrameField
+            label={w.frameSelect.meta.fields.name.label}
+            value={meta.name ?? ""}
+            onChange={updateMeta("name")}
+            placeholder={w.frameSelect.meta.fields.name.placeholder}
+          />
+          <FrameField
+            label={w.frameSelect.meta.fields.birthday.label}
+            value={meta.birthday ?? ""}
+            onChange={updateMeta("birthday")}
+            placeholder={w.frameSelect.meta.fields.birthday.placeholder}
+          />
+          <FrameField
+            label={w.frameSelect.meta.fields.titleCard.label}
+            value={meta.title ?? ""}
+            onChange={updateMeta("title")}
+            placeholder={w.frameSelect.meta.fields.titleCard.placeholder}
+          />
         </>
       ) : (
         <>
-          <FrameField label={w.frameSelect.meta.fields.header.label} value={meta.title ?? ""} onChange={updateMeta("title")} placeholder={w.frameSelect.meta.fields.header.placeholder} />
-          <FrameField label={w.frameSelect.meta.fields.date.label}   value={meta.date  ?? ""} onChange={updateMeta("date")}  placeholder={w.frameSelect.meta.fields.date.placeholder} />
+          <FrameField
+            label={w.frameSelect.meta.fields.header.label}
+            value={meta.title ?? ""}
+            onChange={updateMeta("title")}
+            placeholder={w.frameSelect.meta.fields.header.placeholder}
+          />
+          <FrameField
+            label={w.frameSelect.meta.fields.date.label}
+            value={meta.date ?? ""}
+            onChange={updateMeta("date")}
+            placeholder={w.frameSelect.meta.fields.date.placeholder}
+          />
         </>
       )}
 

@@ -309,9 +309,24 @@ export function ResultScreen({
               {w.result.downloads.sectionSub}
             </p>
             <div className="flex flex-col gap-2">
-              <DownloadButton icon={w.result.downloads.strip.icon}  title={w.result.downloads.strip.label}  sub={w.result.downloads.strip.sub} onClick={downloadStrip} />
-              <DownloadButton icon={w.result.downloads.photos.icon} title={w.result.downloads.photos.label} sub={`${photos.filter(Boolean).length} ${w.result.downloads.photos.sub}`} onClick={downloadPhotos} />
-              <DownloadButton icon={w.result.downloads.video.icon}  title={w.result.downloads.video.label}  sub={w.result.downloads.video.sub} onClick={downloadVideo} />
+              <DownloadButton
+                icon={w.result.downloads.strip.icon}
+                title={w.result.downloads.strip.label}
+                sub={w.result.downloads.strip.sub}
+                onClick={downloadStrip}
+              />
+              <DownloadButton
+                icon={w.result.downloads.photos.icon}
+                title={w.result.downloads.photos.label}
+                sub={`${photos.filter(Boolean).length} ${w.result.downloads.photos.sub}`}
+                onClick={downloadPhotos}
+              />
+              <DownloadButton
+                icon={w.result.downloads.video.icon}
+                title={w.result.downloads.video.label}
+                sub={w.result.downloads.video.sub}
+                onClick={downloadVideo}
+              />
             </div>
           </div>
 
