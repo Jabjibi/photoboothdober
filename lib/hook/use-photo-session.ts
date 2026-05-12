@@ -1,7 +1,8 @@
 "use client";
 
 import { RefObject, useState } from "react";
-import { FILTERS, type FilterId } from "./use-filter";
+import { type FilterId } from "./use-filter";
+import { bakeFilter } from "@/lib/pixel-filters";
 
 const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
 
@@ -54,10 +55,14 @@ export function usePhotoSession({
     canvas.width = w;
     canvas.height = h;
     const ctx = canvas.getContext("2d")!;
-    ctx.filter = FILTERS.find((f) => f.id === filter)?.css ?? "none";
     ctx.translate(w, 0);
     ctx.scale(-1, 1);
     ctx.drawImage(v, 0, 0, w, h);
+    if (filter !== "none") {
+      const frame = ctx.getImageData(0, 0, w, h);
+      bakeFilter(frame.data, filter);
+      ctx.putImageData(frame, 0, 0);
+    }
     return canvas.toDataURL("image/jpeg", 0.88);
   };
 
