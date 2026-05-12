@@ -5,17 +5,12 @@ import gsap from "gsap";
 
 interface UsePrintAnimationResult {
   printing: boolean;
-  containerMinH: number;
   stripRef: React.RefObject<HTMLDivElement | null>;
   stripWrapRef: React.RefObject<HTMLDivElement | null>;
 }
 
-const STRIP_TOP_OFFSET = 80;
-const STRIP_BOTTOM_PAD = 32;
-
 export function usePrintAnimation(): UsePrintAnimationResult {
   const [printing, setPrinting] = useState(true);
-  const [containerMinH, setContainerMinH] = useState(300);
   const stripRef = useRef<HTMLDivElement>(null);
   const stripWrapRef = useRef<HTMLDivElement>(null);
 
@@ -31,8 +26,9 @@ export function usePrintAnimation(): UsePrintAnimationResult {
           delay: 0.25,
           ease: "power3.out",
           onComplete: () => {
+            // Clear GSAP's inline transform so the strip re-enters normal flow
             if (stripRef.current) {
-              setContainerMinH(stripRef.current.offsetHeight + STRIP_TOP_OFFSET + STRIP_BOTTOM_PAD);
+              gsap.set(stripRef.current, { clearProps: "transform" });
             }
             setPrinting(false);
           },
@@ -57,5 +53,5 @@ export function usePrintAnimation(): UsePrintAnimationResult {
     return () => ctx.revert();
   }, [printing]);
 
-  return { printing, containerMinH, stripRef, stripWrapRef };
+  return { printing, stripRef, stripWrapRef };
 }

@@ -17,15 +17,14 @@ interface PrinterBoxProps {
 }
 
 export function PrinterBox({ photos, layoutId, styleId, meta }: PrinterBoxProps) {
-  const { printing, containerMinH, stripRef, stripWrapRef } = usePrintAnimation();
+  const { printing, stripRef, stripWrapRef } = usePrintAnimation();
   const confetti = useConfetti();
   const layout = LAYOUTS[layoutId];
 
   return (
     <div
-      className={`relative overflow-hidden rounded-2xl ${printing ? "flex-1" : ""}`}
+      className={`relative overflow-hidden rounded-2xl ${printing ? "min-h-[300px] flex-1" : ""}`}
       style={{
-        minHeight: containerMinH,
         background: "var(--paper-2)",
         border: "3px solid var(--ink)",
         boxShadow: "0 6px 0 var(--ink)",
@@ -58,8 +57,12 @@ export function PrinterBox({ photos, layoutId, styleId, meta }: PrinterBoxProps)
       {/* strip drop — GSAP target */}
       <div
         ref={stripRef}
-        className="absolute left-1/2 z-[4] flex -translate-x-1/2 flex-col items-center gap-5 pb-8"
-        style={{ top: 80 }}
+        className={
+          printing
+            ? "absolute left-1/2 z-[4] flex -translate-x-1/2 flex-col items-center gap-5 pb-8"
+            : "z-[4] mx-auto flex flex-col items-center gap-5 pb-8"
+        }
+        style={printing ? { top: 80 } : { paddingTop: 80 }}
       >
         <div ref={stripWrapRef}>{layout.render(photos, styleId, meta)}</div>
         <p
