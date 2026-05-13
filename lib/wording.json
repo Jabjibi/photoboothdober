@@ -95,9 +95,9 @@
     "downloads": {
       "sectionTitle": "SAVE YOUR MEMORIES",
       "sectionSub": "EVERYTHING IS YOURS · NO ACCOUNT NEEDED",
-      "strip": { "icon": "◧", "label": "DOWNLOAD STRIP", "sub": "full framed image · PNG" },
-      "photos": { "icon": "▦", "label": "DOWNLOAD PHOTOS", "sub": "raw shots · JPG" },
-      "video": { "icon": "▶", "label": "DOWNLOAD VIDEO", "sub": "animated booth reel · WEBM" }
+      "strip": { "label": "DOWNLOAD STRIP", "sub": "full framed image · PNG" },
+      "photos": { "label": "DOWNLOAD PHOTOS", "sub": "raw shots · JPG" },
+      "video": { "label": "DOWNLOAD VIDEO", "sub": "animated booth reel · WEBM" }
     },
     "receipt": {
       "title": "RECEIPT",

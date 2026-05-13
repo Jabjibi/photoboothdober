@@ -1,5 +1,6 @@
 "use client";
 
+import { Clapperboard, Film, Images } from "lucide-react";
 import { DownloadButton } from "./download-button";
 import w from "@/lib/wording.json";
 
@@ -32,19 +33,19 @@ export function DownloadsCard({
       </p>
       <div className="flex flex-col gap-2">
         <DownloadButton
-          icon={w.result.downloads.strip.icon}
+          icon={Film}
           title={w.result.downloads.strip.label}
           sub={w.result.downloads.strip.sub}
           onClick={onDownloadStrip}
         />
         <DownloadButton
-          icon={w.result.downloads.photos.icon}
+          icon={Images}
           title={w.result.downloads.photos.label}
           sub={`${photoCount} ${w.result.downloads.photos.sub}`}
           onClick={onDownloadPhotos}
         />
         <DownloadButton
-          icon={w.result.downloads.video.icon}
+          icon={Clapperboard}
           title={w.result.downloads.video.label}
           sub={w.result.downloads.video.sub}
           onClick={onDownloadVideo}

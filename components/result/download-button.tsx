@@ -1,11 +1,13 @@
+import type { LucideIcon } from "lucide-react";
+
 interface DownloadButtonProps {
-  icon: string;
+  icon: LucideIcon;
   title: string;
   sub: string;
   onClick: () => void;
 }
 
-export function DownloadButton({ icon, title, sub, onClick }: DownloadButtonProps) {
+export function DownloadButton({ icon: Icon, title, sub, onClick }: DownloadButtonProps) {
   return (
     <button
       onClick={onClick}
@@ -17,7 +19,7 @@ export function DownloadButton({ icon, title, sub, onClick }: DownloadButtonProp
       }}
     >
       <div
-        className="font-display flex shrink-0 items-center justify-center rounded-lg text-lg"
+        className="flex shrink-0 items-center justify-center rounded-lg"
         style={{
           width: 36,
           height: 36,
@@ -26,7 +28,7 @@ export function DownloadButton({ icon, title, sub, onClick }: DownloadButtonProp
           border: "2px solid var(--ink)",
         }}
       >
-        {icon}
+        <Icon size={18} strokeWidth={2.5} />
       </div>
       <div className="min-w-0 flex-1">
         <p className="font-display text-sm leading-none" style={{ color: "var(--ink)" }}>
