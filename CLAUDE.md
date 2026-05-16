@@ -3,6 +3,8 @@
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 @AGENTS.md
+@.agents/skills/next-best-practices/SKILL.md
+@.agents/skills/vercel-composition-patterns/SKILL.md
 
 ## Commands
 
