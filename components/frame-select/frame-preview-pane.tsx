@@ -23,21 +23,15 @@ export function FramePreviewPane({ layoutId, styleId, meta }: FramePreviewPanePr
     <div
       className="relative flex min-h-[200px] flex-1 items-start justify-center overflow-auto rounded-2xl"
       style={{
-        background: "var(--paper-2)",
+        backgroundColor: "var(--paper-2)",
+        backgroundImage:
+          "radial-gradient(color-mix(in srgb, var(--ink) 15%, transparent) 1px, transparent 1.4px)",
+        backgroundSize: "18px 18px",
         border: "3px solid var(--ink)",
         boxShadow: "0 6px 0 var(--ink)",
         padding: 20,
       }}
     >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 rounded-2xl"
-        style={{
-          backgroundImage: "radial-gradient(var(--ink) 1px, transparent 1.4px)",
-          backgroundSize: "18px 18px",
-          opacity: 0.15,
-        }}
-      />
       <p className="font-mono-booth absolute top-3 left-4 text-[10px] tracking-[0.2em] opacity-55">
         PREVIEW · {layout.name.toUpperCase()} · {FRAME_STYLES[styleId].name.toUpperCase()}
       </p>
