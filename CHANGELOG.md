@@ -6,7 +6,7 @@ All notable changes to Sparkle Booth are recorded here.
 
 ## [Unreleased]
 
-### 2026-05-16 — แก้ไข dot background หายเมื่อ scroll ใน FramePreviewPane
+### 2026-05-16 — แก้ไข label ซ้อนกันบน mobile และ dot background หายเมื่อ scroll ใน FramePreviewPane
 
 **Fixed**
 - `components/frame-select/frame-preview-pane.tsx` — ย้าย dot background จาก `position: absolute` overlay div มาเป็น `background-image` บน container โดยตรง เพื่อแก้ปัญหาจุดหายเมื่อ scroll (overlay เดิมครอบคลุมแค่ visible height ของ container); ใช้ `color-mix(in srgb, var(--ink) 15%, transparent)` แทน `opacity: 0.15`

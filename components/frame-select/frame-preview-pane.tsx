@@ -32,15 +32,17 @@ export function FramePreviewPane({ layoutId, styleId, meta }: FramePreviewPanePr
         padding: 20,
       }}
     >
-      <p className="font-mono-booth absolute top-3 left-4 text-[10px] tracking-[0.2em] opacity-55">
-        PREVIEW · {layout.name.toUpperCase()} · {FRAME_STYLES[styleId].name.toUpperCase()}
-      </p>
-      <p
-        className="font-mono-booth absolute top-3 right-4 text-[10px] tracking-[0.2em]"
-        style={{ color: "var(--red)" }}
-      >
-        SHOTS NEEDED · {layout.shots}
-      </p>
+      <div className="absolute top-3 right-4 left-4 flex items-center justify-between gap-2">
+        <p className="font-mono-booth min-w-0 truncate text-[10px] tracking-[0.2em] opacity-55">
+          PREVIEW · {layout.name.toUpperCase()} · {FRAME_STYLES[styleId].name.toUpperCase()}
+        </p>
+        <p
+          className="font-mono-booth shrink-0 text-[10px] tracking-[0.2em]"
+          style={{ color: "var(--red)" }}
+        >
+          SHOTS NEEDED · {layout.shots}
+        </p>
+      </div>
       <div
         style={{
           zoom: previewScale,
